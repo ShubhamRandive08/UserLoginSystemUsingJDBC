@@ -40,22 +40,18 @@ public class UserDao {
 		String msg = null;
 		DatabaseMetaData dbm = con.getMetaData();
 		ResultSet tables = dbm.getTables(null, null, "userdatajdbc", null);
-
 		if (!tables.next()) { // Table does not exist
 			String sql = "CREATE TABLE userdatajdbc (" + "id INT NOT NULL AUTO_INCREMENT,"
 					+ "username VARCHAR(50) NOT NULL," + "password VARCHAR(50) NOT NULL," + "email VARCHAR(100),"
 					+ "PRIMARY KEY (id))";
 			PreparedStatement pst = con.prepareStatement(sql);
-
 			msg = "Table Created Successfully";
 			pst.executeUpdate();
 		} else {
 			msg = "";
 		}
-
 		return msg;
 	}
-
 	public String insertUser(String username, String password, String email) {
 		try {
 			PreparedStatement pt = con
@@ -63,23 +59,18 @@ public class UserDao {
 			pt.setString(1, username);
 			pt.setString(2, password);
 			pt.setString(3, email);
-
 			pt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-
 		}
-
 		return "User Insert Successfully";
 	}
-
 	public ArrayList<UserData> getAllUser() {
 		ArrayList<UserData> userdata = new ArrayList<UserData>();
 		try {
 			PreparedStatement pt = con.prepareStatement("select * from userdatajdbc");
 			ResultSet rs = pt.executeQuery();
-
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String username = rs.getString("username");
@@ -104,9 +95,6 @@ public class UserDao {
 			getUserById.setInt(1, id);
 
 			ResultSet rs = getUserById.executeQuery();
-			
-			
-			
 				while (rs.next()) {
 					recordFound = true;
 					int uid = rs.getInt("id");
@@ -132,13 +120,11 @@ public class UserDao {
 			int id = sc.nextInt();
 
 			getUserByIDMainCode(id);
-
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
 
 		}
-
 	}
 
 	@SuppressWarnings("unused")
