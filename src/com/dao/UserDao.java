@@ -199,7 +199,7 @@ public class UserDao {
 
 		}
 		
-		return "Delete Success ";
+		return "Delete Success";
 	}
 
 }
