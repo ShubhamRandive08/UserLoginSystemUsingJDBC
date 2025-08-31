@@ -20,4 +20,8 @@ public class UserController {
 	public String updateUser() {
 		return userService.updateUser();
 	}
+	
+	public String deleteUser(int id) {
+		return userService.deleteUser(id);
+	}
 }

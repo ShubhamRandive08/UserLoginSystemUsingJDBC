@@ -27,10 +27,12 @@ public class Main {
 //		
 //		System.out.println(userController.insertUser(user.getUsername(), user.getPassword(), user.getEmail()));
 //		
-//		
+		
 		
 		// Code 2
 		userController.getUserByID();
 //		System.out.println(userController.updateUser());
+		
+//		System.out.println(userController.deleteUser(2));
 	}
 }

@@ -33,4 +33,8 @@ public class UserService {
 	public String updateUser() {
 		return userDao.updateUser();
 	}
+	
+	public String deleteUser(int id) {
+		return userDao.deleteUser(id);
+	}
 }

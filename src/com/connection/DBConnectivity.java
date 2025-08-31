@@ -11,7 +11,7 @@ public class DBConnectivity {
 	private final static String username = "root";
 	private final static String password = "root";
 	
-	public Connection dbConnection()  {
+	public static Connection dbConnection()  {
 		Connection con = null;
 		try {
 			// Load the class

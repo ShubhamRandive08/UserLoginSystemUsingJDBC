@@ -24,7 +24,7 @@ import com.entity.UserData;
 
 public class UserDao {
 	DBConnectivity dbConnection = new DBConnectivity();
-	Connection con = dbConnection.dbConnection();
+	Connection con = DBConnectivity.dbConnection();
 	Scanner sc = new Scanner(System.in);
 
 	public String createTable() throws SQLException {
@@ -165,7 +165,7 @@ public class UserDao {
 				pt.setInt(4, id);
 				
 				pt.executeUpdate();
-				
+				msg = "User update success";
 			}else {
 				 System.out.println("Update cancelled. User with ID " + id + " not found.");
 			}
@@ -186,14 +186,20 @@ public class UserDao {
 		return msg;
 	}
 
-	public void deleteUser() {
+	public String deleteUser(int id) {
 		try {
-
+			PreparedStatement pt = con.prepareStatement("delete from userdatajdbc where id = ?");
+			pt.setInt(1, id);
+			
+			pt.executeUpdate();
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
 
 		}
+		
+		return "Delete Success ";
 	}
 
 }
